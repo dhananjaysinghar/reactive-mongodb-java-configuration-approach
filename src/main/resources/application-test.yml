@@ -1,0 +1,11 @@
+MONGO_DB_USER_NAME: test_user
+MONGO_DB_PASSWORD: test_password
+MONGO_DB_NAME: test_database
+MONGO_DB_HOST: localhost
+MONGO_DB_PORT: 18050
+
+spring:
+  data:
+    mongodb:
+      database: ${MONGO_DB_NAME}
+      uri: mongodb://${MONGO_DB_HOST}:${MONGO_DB_PORT}/

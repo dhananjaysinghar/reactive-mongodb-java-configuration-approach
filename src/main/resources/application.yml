@@ -1,0 +1,29 @@
+MONGO_DB_USER_NAME: test_user
+MONGO_DB_PASSWORD: test_password
+MONGO_DB_NAME: test_database
+MONGO_DB_HOST: localhost
+MONGO_DB_PORT: 27017
+
+spring:
+  data:
+    mongodb:
+      database: ${MONGO_DB_NAME}
+      uri: mongodb://${MONGO_DB_USER_NAME}:${MONGO_DB_PASSWORD}@${MONGO_DB_HOST}:${MONGO_DB_PORT}/?authMechanism=SCRAM-SHA-1&authSource=${MONGO_DB_NAME}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true
+
+logging:
+  level:
+    org.springframework.web.client: ${LOG_LEVEL:INFO}
+    org.springframework.web.reactive.function.client: ${LOG_LEVEL:INFO}
+    org.springframework.data.mongodb.core.ReactiveMongoTemplate: DEBUG
+
